@@ -36,7 +36,7 @@ The pointwise spectra use stochastic score-VJP estimates, so their interpretatio
 
 The detailed progression, including the strongest baseline for each experiment, is in the [research story](docs/research_story.md) and [negative-results record](docs/negative_results.md).
 
-## Key lessons
+## Findings
 
 - High cosine similarity between adjacent KV states does not guarantee a useful predictive coding advantage.
 - A learned coordinate system is not evidence of simple latent dynamics unless it beats an equally cheap nonlinear model.
