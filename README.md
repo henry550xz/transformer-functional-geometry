@@ -43,13 +43,7 @@ The surviving observation is structural rather than a compression method: **tran
 
 ![Dictionary recurrence result](assets/dictionary_recurrence.png)
 
-## Why publish negative results?
-
-Most research repositories expose only the final successful method. This repository keeps the hypothesis-testing path visible so that encouraging intermediate signals—high cosine similarity, low hidden-state error, or a concentrated local spectrum—can be evaluated against stronger causal and functional tests.
-
-The goal is to show which intuitions survive realistic baselines, actual downstream interventions, explicit train/validation/test separation, and predeclared go/no-go criteria. Negative outcomes are useful when they sharply reduce uncertainty.
-
-## What I built
+## Technical contributions
 
 - Causal K/V and residual-stream interventions in a pretrained decoder.
 - Actual entropy-coded KV rate–distortion evaluation with reconstructed predictor history.
@@ -59,7 +53,7 @@ The goal is to show which intuitions survive realistic baselines, actual downstr
 - Grassmannian subspace comparison, train-only clustering, prototype stability, and random-null controls.
 - Strict sequence-level train/validation/test separation and deterministic experiment scorecards.
 
-## What I learned
+## Empirical lessons
 
 1. High adjacent-state similarity does not guarantee a useful predictive coding residual.
 2. Learned latent linearity did not outperform ordinary compute-matched nonlinear surrogates.
