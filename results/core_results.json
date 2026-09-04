@@ -1,0 +1,13 @@
+{
+  "project": "Functional Geometry and Compressibility in Transformers",
+  "model": "Qwen2.5-0.5B-Instruct",
+  "results": [
+    {"experiment":"KV temporal residual rank","primary_metric":"median delta/state effective-rank ratio","value":1.811,"decision":"DISCOURAGING","source_artifact":"hour0_2_summary","caveat":"Structural diagnostic, not compression."},
+    {"experiment":"Temporal AR coding","primary_metric":"AR(1) vs previous-delta matched-KL gain before realistic overhead","value":1.157,"decision":"WEAK_SIGNAL","source_artifact":"stage2_rate_distortion_summary","caveat":"Below 1.20 materiality threshold; overhead removed advantage."},
+    {"experiment":"Learned-coordinate block compilation","primary_metric":"one-block next-token KL","value":{"small_mlp":0.0839778351,"latent_linear":0.0857144814,"latent_nonlinear":0.0838850974},"decision":"KILL_BROADER_COMPILATION_DIRECTION","source_artifact":"transformer_compilation_gate_summary","caveat":"Matched approximately 7.68% analytic block MACs."},
+    {"experiment":"Aggregate downstream Fisher","primary_metric":"r95 / hidden dimension","value":{"r95":432,"dimension":896,"fraction":0.4821428571},"decision":"FUNCTIONAL_DIMENSION_KILL","source_artifact":"functional_geometry_prehab_scorecard","caveat":"Empirical Fisher; finite-error KL prediction was weak."},
+    {"experiment":"Functional prehabilitation","primary_metric":"test next-token KL","value":{"fixed_teacher":0.0846111968,"adapted_teacher_drift":0.0009645473,"deployed_prehab":0.0853146168},"decision":"PREHAB_KILL","source_artifact":"functional_geometry_prehab_scorecard","caveat":"Temporary target-block LoRA was discarded at deployment."},
+    {"experiment":"Local H=32 functional geometry","primary_metric":"validation pointwise r95 sketch","value":{"median":27,"q75":42.25,"test_median":25},"decision":"LOCAL_LOW_RANK_BUT_RANDOM","source_artifact":"local_functional_regimes_scorecard","caveat":"384 probes; covariance rank cap 383; exact tail rank not claimed."},
+    {"experiment":"Recurring functional-subspace dictionary","primary_metric":"test median functional-energy capture","value":{"dictionary_q128_k8":0.2616900057,"global_q128":0.2542612702,"median_gain":0.0107919350,"unexplained_energy_reduction":1.0144365040},"decision":"KILL_TRANSFORMER_BRANCH_FINAL","source_artifact":"local_functional_regimes_scorecard","caveat":"q/K selected on validation; test reporting-only."}
+  ]
+}
