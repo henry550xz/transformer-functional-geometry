@@ -2,7 +2,13 @@
 
 > How much of transformer computation is actually compressible? This repository documents a sequence of controlled experiments testing predictive KV coding, learned block surrogates, downstream Fisher geometry, and context-dependent local subspaces in a pretrained language model.
 
-![Falsification funnel](assets/overview.png)
+| Hypothesis tested | Decisive finding | Outcome |
+|---|---|:---:|
+| Predictive KV coding | Learned predictors did not materially beat previous-token differencing after overhead. | Killed |
+| Learned-coordinate block compilation | Latent-linear surrogates did not beat compute-matched nonlinear controls. | Killed |
+| One global functional subspace | Aggregate downstream geometry remained too high-dimensional for the proposed use. | Killed |
+| Pointwise functional geometry | Local downstream sensitivity was substantially more concentrated than aggregate sensitivity. | **Supported** |
+| Reusable local regimes | A small prototype dictionary barely improved on one matched global subspace. | Killed |
 
 ## Key result
 
@@ -114,4 +120,3 @@ This is an empirical research and engineering portfolio, not a state-of-the-art 
 ## License and citation
 
 Original code and documentation are available under the [MIT License](LICENSE). Model and dataset licenses remain separate. Citation metadata is provided in [CITATION.cff](CITATION.cff).
-
