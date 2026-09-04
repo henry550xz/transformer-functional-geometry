@@ -1,8 +1,8 @@
 # Functional Geometry and Compressibility in Transformers
 
-Can pretrained transformer computation be represented more cheaply without losing its function? I explored this question through predictive KV coding, compute-matched block surrogates, and downstream Fisher geometry in Qwen2.5-0.5B-Instruct. The experiments progressively narrowed the original compression hypothesis to a structural observation: downstream functional geometry can be highly concentrated at an individual token even when it is much more complex in aggregate.
+Can pretrained transformer computation be represented more cheaply without losing its function? This project explores that question through predictive KV coding, compute-matched block surrogates, and downstream Fisher geometry in Qwen2.5-0.5B-Instruct. The experiments progressively narrowed the original compression hypothesis to a structural observation: downstream functional geometry can be highly concentrated at an individual token even when it is much more complex in aggregate.
 
-## What I tested
+## Experiments
 
 | Hypothesis | Main comparison | Outcome |
 |---|---|---|
@@ -16,7 +16,7 @@ Every learned component was fit on sequence-disjoint training data, hyperparamet
 
 ## Main result
 
-At the residual stream after zero-based block 10, I estimated downstream Fisher geometry over a fixed 32-token causal horizon. The median validation estimate required **27 of 896 dimensions** to account for 95% of pointwise functional energy, while the corresponding matched aggregate estimate required approximately **107 dimensions**.
+At the residual stream after zero-based block 10, downstream Fisher geometry was estimated over a fixed 32-token causal horizon. The median validation estimate required **27 of 896 dimensions** to account for 95% of pointwise functional energy, while the corresponding matched aggregate estimate required approximately **107 dimensions**.
 
 ![Median pointwise and matched aggregate functional spectra](assets/local_vs_global_geometry.png)
 
@@ -29,14 +29,14 @@ The pointwise spectra use stochastic score-VJP estimates, so their interpretatio
 ## How the project evolved
 
 1. **Predictive KV coding.** High adjacent-state similarity initially suggested that new cache states might be predicted rather than stored. Previous-token differencing captured most of the useful temporal redundancy; AR models, token×depth prediction, conditional transforms, and heterogeneous codecs did not add a material advantage after realistic overhead.
-2. **Block compilation.** I then tested whether transformer blocks could be replaced by cheap learned dynamics. At matched compute, latent-linear models did not outperform ordinary nonlinear surrogates, and multi-block replacements remained too damaging.
-3. **Aggregate functional geometry.** Hidden-state error might emphasize directions that the rest of the network barely uses, so I estimated a downstream pullback Fisher metric. The aggregate geometry remained too high-dimensional for the intended compression argument, and its quadratic form only marginally improved prediction of finite replacement damage.
+2. **Block compilation.** The next experiment tested whether transformer blocks could be replaced by cheap learned dynamics. At matched compute, latent-linear models did not outperform ordinary nonlinear surrogates, and multi-block replacements remained too damaging.
+3. **Aggregate functional geometry.** Hidden-state error might emphasize directions that the rest of the network barely uses, motivating an estimate of the downstream pullback Fisher metric. The aggregate geometry remained too high-dimensional for the intended compression argument, and its quadratic form only marginally improved prediction of finite replacement damage.
 4. **Local functional geometry.** Estimating the same geometry pointwise revealed substantially more concentrated spectra than the matched aggregate.
 5. **Reusable regimes.** Train-only subspace clustering tested whether those local geometries formed a small recurring dictionary. Held-out capture barely improved over a single global subspace, separating the supported local-concentration result from the unsupported compression interpretation.
 
 The detailed progression, including the strongest baseline for each experiment, is in the [research story](docs/research_story.md) and [negative-results record](docs/negative_results.md).
 
-## What I learned
+## Key lessons
 
 - High cosine similarity between adjacent KV states does not guarantee a useful predictive coding advantage.
 - A learned coordinate system is not evidence of simple latent dynamics unless it beats an equally cheap nonlinear model.
