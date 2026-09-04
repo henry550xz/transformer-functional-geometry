@@ -1,0 +1,13 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "zero_based_block": 10,
+  "activation": "output of block 10 / hidden_states[11]",
+  "horizon": 32,
+  "score_vjp_probes": 384,
+  "probe_batch_size": 16,
+  "retained_eigenvectors": 256,
+  "subspace_dimensions": [32, 64, 128],
+  "prototype_counts": [1, 2, 4, 8, 16],
+  "seed": 20260904,
+  "note": "Supply your own redistributable corpus. The validated private corpus is not included."
+}
