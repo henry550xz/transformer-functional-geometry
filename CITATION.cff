@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If this repository is useful in your research, please cite it as software."
+title: "Functional Geometry and Compressibility in Transformers"
+type: software
+authors:
+  - given-names: Henry
+    family-names: He
+repository-code: "https://github.com/henry550xz/transformer-functional-geometry"
+license: MIT
+version: 0.1.0
+date-released: 2026-09-04
+
